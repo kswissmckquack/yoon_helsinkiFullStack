@@ -1,0 +1,9 @@
+title 0.6 Sequence Diagram
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+server->browser: {"message":"note created"}
+
+note over browser:
+ Browser sends JSON object {content:"content",date:"date: "2020-04-11T17:31:50.584Z"}
+ Content type: application/json infoms server of data structure
+end note

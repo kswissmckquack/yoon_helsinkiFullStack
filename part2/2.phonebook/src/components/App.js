@@ -55,13 +55,18 @@ const App = () => {
           setTimeout(() => {setMessage('')},5000)
         }).catch(error => setError(`${personObject.name} was already removed from the server`))
     } else {
-      personService.create(personObject).then(returnedPerson => {
+      personService.create(personObject)
+      .then(returnedPerson => {
           setPersons(persons.concat(returnedPerson))
           setNewName('')
           setNewPhoneNumber('')
           setMessage(`${returnedPerson.name} added successfully!`)
           setTimeout(() => {setMessage('')},5000)
-        })
+      })
+      .catch(error => {
+        console.log(error.response.data)
+        setError(error.response.data)
+      })
     }
   }
 
